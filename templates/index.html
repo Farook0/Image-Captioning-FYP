@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Captioning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   
+</head>
+<body> 
+  <header class="header">
+    <h1>Image Captioning</h1>
+  </header>
+  <main class="main">
+    <section class="upload-section">
+    <form action="/upload" method="POST" enctype="multipart/form-data"   class="upload-form">
+        <input type="file" name="image" id="image-input" class="upload-input" >
+        <label for="image-input" class="upload-label">Choose an Image</label>
+           <input type="submit" value="Upload" class="upload-button" >
+    </form>
+
+
+    <br><b class="notification">{{notification}}</b> </section>
+    <section class="caption-section">
+    <h2>Predicted Captions</h2>
+   
+        <!-- Predicted captions will be displayed here -->
+        <div id="caption-results" class="caption-results">
+
+        <form action="/predict" method="GET" enctype="multipart/form-data">
+            <input type="submit" value="predict" >
+            
+            {{captions}}
+        </form>
+
+        <br><br>
+        <h1>For Playing Audio press Audio button</h1>
+        <form action="/play" method="GET" class="play-form">
+            <input type="submit" value="play" class="play-button">
+            
+
+        </form>
+        <img src="{{image_path}}" alt="">
+      </div>
+      </section>
+      
+  </main>
+</body>
+</html>
